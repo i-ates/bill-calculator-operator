@@ -27,15 +27,14 @@ import (
 type ResultSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of Result. Edit result_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
 }
 
 // ResultStatus defines the observed state of Result
 type ResultStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	Output      int64  `json:"output"`
+	Description string `json:"description"`
 }
 
 //+kubebuilder:object:root=true
