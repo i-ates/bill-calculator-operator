@@ -1,0 +1,20 @@
+# permissions for end users to view results.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: result-viewer-role
+rules:
+- apiGroups:
+  - calculator.sap.com.calculator.sap.com
+  resources:
+  - results
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - calculator.sap.com.calculator.sap.com
+  resources:
+  - results/status
+  verbs:
+  - get

@@ -21,4 +21,12 @@ resources:
   kind: Calculation
   path: sap.com/homework/api/v1alpha1
   version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  domain: calculator.sap.com
+  group: calculator.sap.com
+  kind: Result
+  path: sap.com/homework/api/v1alpha1
+  version: v1alpha1
 version: "3"
