@@ -1,0 +1,6 @@
+apiVersion: calculator.sap.com.calculator.sap.com/v1alpha1
+kind: Bill
+metadata:
+  name: bill-sample
+spec:
+  # TODO(user): Add fields here
