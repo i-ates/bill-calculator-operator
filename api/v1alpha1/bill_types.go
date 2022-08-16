@@ -28,8 +28,10 @@ type BillSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Bill. Edit bill_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	//Amount is the expense that is indicated in the bill
+	Amount int `json:"amount"`
+	//IsProvision whether it's a provision, or not
+	IsProvision bool `json:"isProvision"`
 }
 
 // BillStatus defines the observed state of Bill
