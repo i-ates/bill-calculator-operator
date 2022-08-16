@@ -1,0 +1,24 @@
+# permissions for end users to edit calculations.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: calculation-editor-role
+rules:
+- apiGroups:
+  - calculator.sap.com.calculator.sap.com
+  resources:
+  - calculations
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - calculator.sap.com.calculator.sap.com
+  resources:
+  - calculations/status
+  verbs:
+  - get

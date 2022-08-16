@@ -1,0 +1,6 @@
+apiVersion: calculator.sap.com.calculator.sap.com/v1alpha1
+kind: Calculation
+metadata:
+  name: calculation-sample
+spec:
+  # TODO(user): Add fields here
