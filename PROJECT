@@ -1,0 +1,6 @@
+domain: calculator.sap.com
+layout:
+- go.kubebuilder.io/v4-alpha
+projectName: bill-calculator-operator
+repo: sap.com/homework
+version: "3"
