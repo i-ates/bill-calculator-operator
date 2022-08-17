@@ -18,6 +18,7 @@ package controllers
 
 import (
 	"context"
+	"fmt"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
@@ -46,10 +47,32 @@ type CalculationReconciler struct {
 //
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.12.2/pkg/reconcile
+
+var changeAmount = false
+
 func (r *CalculationReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
 
-	// TODO(user): your logic here
+	var bill calculatorsapcomv1alpha1.Bill
+
+	err := r.Client.Get(ctx, req.NamespacedName, &bill)
+	if err != nil {
+		log.Log.Info("bill not found")
+		return ctrl.Result{}, err
+	}
+
+	log.Log.Info(fmt.Sprintf("bill %s: ", bill.Name), "amount: ", bill.Spec.Amount)
+
+	if changeAmount == false {
+		changeAmount = true
+
+		bill.Spec.Amount = 20
+
+		err := r.Client.Update(ctx, &bill)
+		if err != nil {
+			return ctrl.Result{}, err
+		}
+	}
 
 	return ctrl.Result{}, nil
 }
@@ -57,6 +80,6 @@ func (r *CalculationReconciler) Reconcile(ctx context.Context, req ctrl.Request)
 // SetupWithManager sets up the controller with the Manager.
 func (r *CalculationReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&calculatorsapcomv1alpha1.Calculation{}).
+		For(&calculatorsapcomv1alpha1.Bill{}).
 		Complete(r)
 }

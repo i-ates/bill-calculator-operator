@@ -3,4 +3,4 @@ kind: Bill
 metadata:
   name: bill-sample
 spec:
-  # TODO(user): Add fields here
+  amount: 10
